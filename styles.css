@@ -164,6 +164,7 @@ section {
     justify-content: center;
     background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
     padding-top: 80px;
+    padding-bottom: 120px; /* Add bottom spacing to prevent overlap */
     position: relative;
     overflow: hidden;
 }
@@ -363,6 +364,7 @@ section {
    =========================== */
 .about {
     background: var(--bg-primary);
+    padding-top: 120px; /* Extra top padding for better spacing from hero */
 }
 
 .about-content {
