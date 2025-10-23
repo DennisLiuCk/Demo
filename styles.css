@@ -364,7 +364,7 @@ section {
    =========================== */
 .about {
     background: var(--bg-primary);
-    padding-top: 120px; /* Extra top padding for better spacing from hero */
+    padding-top: 200px; /* Extra top padding for better spacing from hero */
 }
 
 .about-content {
