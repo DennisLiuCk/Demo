@@ -100,6 +100,28 @@ section {
 }
 
 /* ===========================
+   Scroll Progress Indicator
+   =========================== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    width: 0%;
+    transition: width 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
+}
+
+/* ===========================
    Navigation
    =========================== */
 .navbar {
@@ -256,6 +278,9 @@ section {
     transition: all var(--transition-base);
     cursor: pointer;
     border: none;
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
 }
 
 .btn-primary {
@@ -361,13 +386,15 @@ section {
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
+    transition: all var(--transition-base), transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .focus-item:hover {
     border-color: var(--primary-color);
     box-shadow: var(--shadow-md);
-    transform: translateY(-4px) scale(1.01);  /* Apple-style lift and scale */
+    /* Transform will be controlled by JavaScript for 3D tilt */
 }
 
 .focus-icon {
@@ -545,13 +572,15 @@ section {
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
-    transition: all var(--transition-base);
+    transition: all var(--transition-base), transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .skill-category:hover {
     border-color: var(--primary-color);
     box-shadow: var(--shadow-md);
-    transform: translateY(-4px) scale(1.01);  /* Apple-style lift and scale */
+    /* Transform will be controlled by JavaScript for 3D tilt */
 }
 
 .category-title {
@@ -625,13 +654,15 @@ section {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
-    transition: all var(--transition-base);
+    transition: all var(--transition-base), transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .ai-tool-card:hover {
     border-color: var(--primary-color);
     box-shadow: var(--shadow-lg);
-    transform: translateY(-6px) scale(1.02);  /* Apple-style prominent lift */
+    /* Transform will be controlled by JavaScript for 3D tilt */
 }
 
 .ai-tool-header {
