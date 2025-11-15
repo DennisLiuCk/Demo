@@ -3,452 +3,544 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dennis Liu - Backend Engineer focused on building scalable systems, API architecture, and microservices. Experienced in e-commerce platforms and distributed systems.">
-    <title>Dennis Liu - Backend Engineer</title>
+    <meta name="description" content="Dennis Liu - Backend Engineer specializing in distributed systems, API architecture, and scalable e-commerce solutions.">
+    <title>dennis_liu:~ $ whoami</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress">
-        <div class="scroll-progress-bar"></div>
+    <!-- Matrix Background Effect -->
+    <canvas id="matrix-canvas" class="matrix-bg"></canvas>
+
+    <!-- Terminal Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <span class="brand-bracket">&lt;</span>
-                <span class="brand-name">Dennis Liu</span>
-                <span class="brand-bracket">/&gt;</span>
+    <!-- Navigation Bar -->
+    <nav class="terminal-nav">
+        <div class="nav-container">
+            <div class="nav-prompt">
+                <span class="prompt-user">dennis@portfolio</span>
+                <span class="prompt-separator">:</span>
+                <span class="prompt-path">~</span>
+                <span class="prompt-symbol">$</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#ai-tools" class="nav-link">AI Collaboration</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#init" class="nav-cmd" data-cmd="./about.sh">about</a></li>
+                <li><a href="#work" class="nav-cmd" data-cmd="cat experience.log">work</a></li>
+                <li><a href="#stack" class="nav-cmd" data-cmd="ls -la skills/">stack</a></li>
+                <li><a href="#contact" class="nav-cmd" data-cmd="./contact.sh">contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-label">Backend Engineer</div>
-                <h1 class="hero-title">
-                    Dennis Liu
-                </h1>
-                <p class="hero-subtitle">
-                    Building scalable systems for e-commerce platforms
-                </p>
-                <p class="hero-description">
-                    Focused on API architecture, distributed systems, and microservices.
-                    Currently working on merchant-centric infrastructure at Shoalter Technology.
-                </p>
-                <div class="hero-cta">
-                    <a href="#experience" class="btn btn-primary">Experience</a>
-                    <a href="https://www.linkedin.com/in/dennis-liu-89b502188" target="_blank" class="btn btn-secondary">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        LinkedIn
+    <!-- Hero Section / Terminal Init -->
+    <section id="init" class="hero-terminal">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="btn-close"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-maximize"></span>
+                </div>
+                <div class="terminal-title">dennis_liu@backend-engineer: ~</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">whoami</span>
+                </div>
+                <div class="output">
+                    <h1 class="glitch-text" data-text="DENNIS LIU">DENNIS LIU</h1>
+                    <p class="role-text">Backend Engineer<span class="cursor-blink">_</span></p>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">cat bio.txt</span>
+                </div>
+                <div class="output bio-output">
+                    <p class="typing-text">Building distributed systems for e-commerce platforms.</p>
+                    <p class="typing-text delay-1">Crafting scalable APIs, microservices, and data architectures.</p>
+                    <p class="typing-text delay-2">Currently architecting merchant-centric solutions at Shoalter Technology.</p>
+                </div>
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">ls capabilities/</span>
+                </div>
+                <div class="output capabilities-grid">
+                    <span class="capability">api-gateway/</span>
+                    <span class="capability">distributed-cache/</span>
+                    <span class="capability">microservices/</span>
+                    <span class="capability">database-sharding/</span>
+                    <span class="capability">rate-limiting/</span>
+                    <span class="capability">observability/</span>
+                </div>
+                <div class="terminal-line cta-line">
+                    <span class="prompt">$</span>
+                    <span class="command typing-cursor">_</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#work" class="terminal-btn">
+                        <span class="btn-prompt">$</span> view-experience
+                    </a>
+                    <a href="https://www.linkedin.com/in/dennis-liu-89b502188" target="_blank" class="terminal-btn secondary">
+                        <span class="btn-prompt">&gt;</span> connect-linkedin
                     </a>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">scroll</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="code-section">
         <div class="container">
-            <h2 class="section-title">About</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">
-                        I'm a backend engineer with experience in building e-commerce systems, API infrastructure,
-                        and distributed architectures.
-                    </p>
-                    <p>
-                        My work focuses on practical solutions to common challenges: API gateway design for multi-tier
-                        systems, rate limiting for traffic management, and database optimization for transaction processing.
-                        I've worked with technologies like Spring Boot, Redis, MySQL, and Kubernetes in production environments.
-                    </p>
-                    <p>
-                        Currently at Shoalter Technology, I contribute to merchant-centric platform development, working on
-                        microservices integration, product lifecycle management, and system observability. Previously at Gogoro,
-                        I worked on distributed caching, database sharding, and helped improve test coverage across services.
-                    </p>
-                    <p>
-                        I value clean architecture, proper testing, and monitoring. I'm interested in learning from experienced
-                        engineers and contributing to teams building reliable, scalable systems.
-                    </p>
-                </div>
-                <div class="about-focus">
-                    <h3>Areas of Focus</h3>
-                    <div class="focus-grid">
-                        <div class="focus-item">
-                            <div class="focus-icon">⚙️</div>
-                            <div class="focus-title">API Architecture</div>
-                            <p>Gateway design, rate limiting, OpenAPI integration</p>
-                        </div>
-                        <div class="focus-item">
-                            <div class="focus-icon">🗄️</div>
-                            <div class="focus-title">Data Systems</div>
-                            <p>MySQL optimization, Redis caching, sharding strategies</p>
-                        </div>
-                        <div class="focus-item">
-                            <div class="focus-icon">☁️</div>
-                            <div class="focus-title">Microservices</div>
-                            <p>Spring Boot, Docker, Kubernetes deployment</p>
-                        </div>
-                        <div class="focus-item">
-                            <div class="focus-icon">📊</div>
-                            <div class="focus-title">Observability</div>
-                            <p>Grafana monitoring, performance optimization</p>
-                        </div>
-                    </div>
+            <div class="section-header">
+                <span class="line-number">001</span>
+                <h2 class="section-title">
+                    <span class="comment">// Who I Am</span>
+                </h2>
+            </div>
+            <div class="code-block">
+                <div class="code-content">
+                    <pre><code><span class="keyword">const</span> <span class="variable">dennisLiu</span> = {
+    <span class="property">role:</span> <span class="string">"Backend Engineer"</span>,
+    <span class="property">focus:</span> [
+        <span class="string">"Distributed Systems"</span>,
+        <span class="string">"API Architecture"</span>,
+        <span class="string">"E-commerce Platforms"</span>,
+        <span class="string">"Microservices Design"</span>
+    ],
+    <span class="property">philosophy:</span> <span class="string">"Clean architecture, proper testing, and robust monitoring"</span>,
+
+    <span class="property">expertise:</span> {
+        <span class="property">api_design:</span> [
+            <span class="string">"Gateway orchestration"</span>,
+            <span class="string">"Rate limiting algorithms"</span>,
+            <span class="string">"OpenAPI integration"</span>,
+            <span class="string">"Idempotent APIs"</span>
+        ],
+        <span class="property">data_systems:</span> [
+            <span class="string">"MySQL optimization"</span>,
+            <span class="string">"Redis distributed caching"</span>,
+            <span class="string">"Database sharding strategies"</span>,
+            <span class="string">"Read-write splitting"</span>
+        ],
+        <span class="property">infrastructure:</span> [
+            <span class="string">"Spring Boot microservices"</span>,
+            <span class="string">"Docker & Kubernetes"</span>,
+            <span class="string">"AWS cloud architecture"</span>,
+            <span class="string">"Auto-scaling solutions"</span>
+        ],
+        <span class="property">observability:</span> [
+            <span class="string">"Grafana dashboards"</span>,
+            <span class="string">"Performance profiling"</span>,
+            <span class="string">"System monitoring"</span>
+        ]
+    },
+
+    <span class="property">currentChallenge:</span> <span class="function">() =></span> {
+        <span class="keyword">return</span> <span class="string">"Architecting merchant-centric platforms with"</span> +
+               <span class="string">" dynamic product lifecycle management and"</span> +
+               <span class="string">" multi-tier resource distribution."</span>;
+    }
+};</code></pre>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="work" class="experience-log">
         <div class="container">
-            <h2 class="section-title">Professional Journey</h2>
-            <div class="timeline">
+            <div class="section-header">
+                <span class="line-number">002</span>
+                <h2 class="section-title">
+                    <span class="comment">// Work History</span>
+                </h2>
+            </div>
+
+            <div class="log-viewer">
                 <!-- Shoalter Technology -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-title">Senior Software Engineer</h3>
-                                <h4 class="timeline-company">Shoalter Technology</h4>
+                <div class="log-entry" data-level="current">
+                    <div class="log-header">
+                        <span class="log-timestamp">[2024.10 - PRESENT]</span>
+                        <span class="log-level level-success">ACTIVE</span>
+                    </div>
+                    <div class="log-content">
+                        <h3 class="log-title">
+                            <span class="role">Senior Software Engineer</span>
+                            <span class="separator">@</span>
+                            <span class="company">Shoalter Technology</span>
+                        </h3>
+                        <p class="log-location">📍 Taipei, Taiwan</p>
+
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Architected <span class="highlight">merchant-centric infrastructure</span> for dynamic e-commerce platforms, delivering comprehensive product and store management systems</p>
                             </div>
-                            <span class="timeline-date">Oct 2024 - Present</span>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Implemented <span class="highlight">OpenAPI Gateway</span> solutions for API traffic orchestration and seamless microservices integration</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Engineered <span class="highlight">rate limiting mechanisms</span> ensuring equitable resource distribution across multi-tier merchant hierarchies</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Led <span class="highlight">product lifecycle management</span> initiatives, streamlining onboarding and cross-platform synchronization workflows</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Optimized service performance via <span class="highlight">Grafana & Glowroot</span> observability, proactively tuning systems for enhanced reliability</p>
+                            </div>
                         </div>
-                        <p class="timeline-location">📍 Taipei City, Taiwan</p>
-                        <ul class="timeline-achievements">
-                            <li>Architected merchant-centric system infrastructure for dynamic e-commerce platforms, delivering robust product and store management solutions</li>
-                            <li>Implemented OpenAPI Gateway solutions to orchestrate API traffic management and enable seamless microservices integration</li>
-                            <li>Engineered rate limiting mechanisms to safeguard backend services while ensuring equitable resource distribution across multi-tier merchant hierarchies</li>
-                            <li>Spearheaded product lifecycle management initiatives, streamlining product onboarding, catalog operations, and cross-platform synchronization workflows</li>
-                            <li>Monitored and optimized service performance through observability tools (Grafana, Glowroot), proactively tuning systems to enhance efficiency and reliability</li>
-                        </ul>
                     </div>
                 </div>
 
                 <!-- Gogoro -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-title">Software Engineer</h3>
-                                <h4 class="timeline-company">Gogoro</h4>
+                <div class="log-entry" data-level="info">
+                    <div class="log-header">
+                        <span class="log-timestamp">[2022.02 - 2024.03]</span>
+                        <span class="log-level level-info">COMPLETED</span>
+                    </div>
+                    <div class="log-content">
+                        <h3 class="log-title">
+                            <span class="role">Software Engineer</span>
+                            <span class="separator">@</span>
+                            <span class="company">Gogoro</span>
+                        </h3>
+                        <p class="log-location">📍 Taipei, Taiwan</p>
+
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p><span class="highlight">Distributed Caching:</span> Built data access services with Redis-based distributed caching and idempotent API design for safe retry handling</p>
                             </div>
-                            <span class="timeline-date">Feb 2022 - Mar 2024</span>
-                        </div>
-                        <p class="timeline-location">📍 Taipei City, Taiwan</p>
-                        <ul class="timeline-achievements">
-                            <li><strong>Distributed Caching & Idempotent APIs:</strong> Developed data access services with Redis-based distributed caching, designing idempotent APIs to ensure safe handling of repeated requests</li>
-                            <li><strong>Database Performance:</strong> Implemented MySQL sharding and read-write splitting strategies for high transaction volumes and improved data platform stability</li>
-                            <li><strong>Testing Champion:</strong> Introduced JUnit and Mockito frameworks, creating standardized testing templates that increased unit test coverage from 10% to 60%—fostering a stronger testing culture</li>
-                            <li><strong>API Gateway & Rate Limiting:</strong> Implemented Spring Cloud Gateway with Leaky Bucket algorithm for traffic management, integrated access control and usage policies for OpenAPI services</li>
-                            <li><strong>Microservices on AWS:</strong> Deployed Docker and Kubernetes-based microservices with Auto Scaling, ensuring consistent performance during traffic spikes and optimal resource utilization</li>
-                        </ul>
-                        <div class="timeline-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Redis</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">AWS</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Kubernetes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Galaxy Software Services Corporation -->
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-title">Java Programmer → Java Program Analyst</h3>
-                                <h4 class="timeline-company">Galaxy Software Services Corporation</h4>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p><span class="highlight">Database Optimization:</span> Implemented MySQL sharding and read-write splitting for high-volume transactions, improving data platform stability</p>
                             </div>
-                            <span class="timeline-date">Nov 2019 - Nov 2021</span>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p><span class="highlight">Testing Champion:</span> Introduced JUnit/Mockito frameworks with standardized templates, boosting unit test coverage from 10% to 60%</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p><span class="highlight">API Gateway:</span> Deployed Spring Cloud Gateway with Leaky Bucket algorithm for traffic management and OpenAPI access control</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p><span class="highlight">Cloud Infrastructure:</span> Managed Docker/Kubernetes microservices on AWS with Auto Scaling for consistent performance during traffic spikes</p>
+                            </div>
                         </div>
-                        <p class="timeline-location">📍 Taipei City, Taiwan</p>
-                        <ul class="timeline-achievements">
-                            <li>Developed web-based applications using Java, Spring Framework, and React.js with Object-Oriented Programming principles</li>
-                            <li>Implemented persistence layer using MyBatis for Object-Relational Mapping with MySQL and Oracle databases</li>
-                            <li>Developed and maintained an end-to-end patent search system, delivering efficient intellectual property research and analytics capabilities</li>
-                            <li>Architected RESTful API infrastructure leveraging Spring Boot and React.js for sophisticated patent querying with intuitive results visualization</li>
-                            <li>Engineered full-text search capabilities through MySQL and Apache Solr integration, dramatically enhancing search performance across extensive patent document collections</li>
-                        </ul>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galaxy Software -->
+                <div class="log-entry" data-level="info">
+                    <div class="log-header">
+                        <span class="log-timestamp">[2019.11 - 2021.11]</span>
+                        <span class="log-level level-info">COMPLETED</span>
+                    </div>
+                    <div class="log-content">
+                        <h3 class="log-title">
+                            <span class="role">Java Program Analyst</span>
+                            <span class="separator">@</span>
+                            <span class="company">Galaxy Software Services</span>
+                        </h3>
+                        <p class="log-location">📍 Taipei, Taiwan</p>
+
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Developed <span class="highlight">end-to-end patent search system</span> delivering efficient intellectual property research and analytics capabilities</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Architected <span class="highlight">RESTful API infrastructure</span> with Spring Boot and React.js for sophisticated patent querying and visualization</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Engineered <span class="highlight">full-text search</span> via MySQL and Apache Solr integration, enhancing search performance across extensive patent collections</p>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="bullet">▸</span>
+                                <p>Built web applications using <span class="highlight">Java, Spring Framework, and React.js</span> with OOP principles and MyBatis ORM</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Skills / Tech Stack -->
+    <section id="stack" class="tech-stack-section">
         <div class="container">
-            <h2 class="section-title">Technical Arsenal</h2>
-            <p class="section-subtitle">The tools I use to build things that scale</p>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">⚙️</span>
-                        Backend & Frameworks
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">Spring Cloud</span>
-                        <span class="skill-tag">MyBatis</span>
-                        <span class="skill-tag">RESTful APIs</span>
-                        <span class="skill-tag">Microservices</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">🗄️</span>
-                        Databases & Caching
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Oracle</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">Apache Solr</span>
-                        <span class="skill-tag">Database Sharding</span>
-                        <span class="skill-tag">Read-Write Splitting</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">☁️</span>
-                        Cloud & DevOps
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">Auto Scaling</span>
-                        <span class="skill-tag">CI/CD</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">🔧</span>
-                        API & Integration
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">API Gateway</span>
-                        <span class="skill-tag">OpenAPI</span>
-                        <span class="skill-tag">Rate Limiting</span>
-                        <span class="skill-tag">Leaky Bucket Algorithm</span>
-                        <span class="skill-tag">Idempotent Design</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">📊</span>
-                        Monitoring & Testing
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Grafana</span>
-                        <span class="skill-tag">Glowroot</span>
-                        <span class="skill-tag">JUnit</span>
-                        <span class="skill-tag">Mockito</span>
-                        <span class="skill-tag">Unit Testing</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <span class="category-icon">🎨</span>
-                        Frontend (Yes, I can do this too)
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Collaboration Section -->
-    <section id="ai-tools" class="ai-tools">
-        <div class="container">
-            <h2 class="section-title">AI-Assisted Development</h2>
-            <p class="section-subtitle">Leveraging modern AI tools to enhance productivity and code quality</p>
-
-            <div class="ai-intro">
-                <p>
-                    I actively integrate AI-powered development tools into my workflow to improve efficiency,
-                    maintain code quality, and accelerate development cycles. These tools complement traditional
-                    engineering practices rather than replace them.
-                </p>
+            <div class="section-header">
+                <span class="line-number">003</span>
+                <h2 class="section-title">
+                    <span class="comment">// Technology Stack</span>
+                </h2>
             </div>
 
-            <div class="ai-tools-grid">
-                <div class="ai-tool-card">
-                    <div class="ai-tool-header">
-                        <div class="ai-tool-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <path d="M9 9h6M9 15h6"/>
-                            </svg>
-                        </div>
-                        <h3>Claude Code</h3>
+            <div class="stack-grid">
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>backend_frameworks/</h3>
                     </div>
-                    <div class="ai-tool-content">
-                        <p class="ai-tool-description">
-                            AI-powered coding assistant that helps with code generation, refactoring, and problem-solving.
-                            Particularly useful for rapid prototyping and exploring different architectural approaches.
-                        </p>
-                        <div class="ai-tool-uses">
-                            <h4>Use Cases</h4>
-                            <ul>
-                                <li>Code review and refactoring suggestions</li>
-                                <li>API design and documentation generation</li>
-                                <li>Unit test scaffolding and test case generation</li>
-                                <li>Debugging and error analysis</li>
-                            </ul>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Java</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Spring Boot</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Spring Cloud</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">MyBatis</span>
+                            <span class="item-bar"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="ai-tool-card">
-                    <div class="ai-tool-header">
-                        <div class="ai-tool-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-                                <polyline points="16 6 12 2 8 6"/>
-                                <line x1="12" y1="2" x2="12" y2="15"/>
-                            </svg>
-                        </div>
-                        <h3>Cursor</h3>
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>databases/</h3>
                     </div>
-                    <div class="ai-tool-content">
-                        <p class="ai-tool-description">
-                            AI-first code editor that provides context-aware code completion and intelligent refactoring.
-                            Streamlines development workflow with real-time AI assistance.
-                        </p>
-                        <div class="ai-tool-uses">
-                            <h4>Use Cases</h4>
-                            <ul>
-                                <li>Intelligent code completion and suggestions</li>
-                                <li>Cross-file context understanding</li>
-                                <li>Pattern recognition for code consistency</li>
-                                <li>Quick prototyping and boilerplate generation</li>
-                            </ul>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">MySQL</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Redis</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Oracle</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="intermediate">
+                            <span class="item-name">Apache Solr</span>
+                            <span class="item-bar"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="ai-tool-card">
-                    <div class="ai-tool-header">
-                        <div class="ai-tool-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
-                                <polyline points="7.5 19.79 7.5 14.6 3 12"/>
-                                <polyline points="21 12 16.5 14.6 16.5 19.79"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12"/>
-                            </svg>
-                        </div>
-                        <h3>Windsurf</h3>
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>cloud_infrastructure/</h3>
                     </div>
-                    <div class="ai-tool-content">
-                        <p class="ai-tool-description">
-                            Collaborative AI development environment that enhances team productivity.
-                            Helps maintain code quality and consistency across distributed teams.
-                        </p>
-                        <div class="ai-tool-uses">
-                            <h4>Use Cases</h4>
-                            <ul>
-                                <li>Team collaboration and knowledge sharing</li>
-                                <li>Code quality checks and best practices</li>
-                                <li>Documentation and comment generation</li>
-                                <li>Codebase exploration and understanding</li>
-                            </ul>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">AWS</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Docker</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Kubernetes</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="intermediate">
+                            <span class="item-name">CI/CD Pipelines</span>
+                            <span class="item-bar"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>architecture_patterns/</h3>
+                    </div>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">API Gateway Design</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Microservices</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Distributed Caching</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Rate Limiting</span>
+                            <span class="item-bar"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>monitoring_tools/</h3>
+                    </div>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Grafana</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Glowroot</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">JUnit Testing</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="expert">
+                            <span class="item-name">Mockito</span>
+                            <span class="item-bar"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stack-category">
+                    <div class="category-header">
+                        <span class="folder-icon">📁</span>
+                        <h3>ai_collaboration/</h3>
+                    </div>
+                    <div class="stack-items">
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Claude Code</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="advanced">
+                            <span class="item-name">Cursor IDE</span>
+                            <span class="item-bar"></span>
+                        </div>
+                        <div class="stack-item" data-proficiency="intermediate">
+                            <span class="item-name">Windsurf</span>
+                            <span class="item-bar"></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="ai-philosophy">
-                <h3>Development Philosophy</h3>
-                <p>
-                    While AI tools significantly enhance productivity, I believe they work best when combined with
-                    solid engineering fundamentals. They help with routine tasks and exploration, freeing up time
-                    for critical thinking, architecture design, and problem-solving. The goal is to write better
-                    code faster, not to skip understanding what the code does.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-card">
-                <div class="education-content">
-                    <h3 class="education-degree">Bachelor of Science</h3>
-                    <h4 class="education-major">Biomedical Imaging and Radiological Sciences</h4>
-                    <p class="education-school">National Yang Ming Chiao Tung University</p>
-                    <p class="education-year">2008 - 2013</p>
+            <!-- Education in Stack Section -->
+            <div class="education-block">
+                <div class="section-header">
+                    <span class="line-number">004</span>
+                    <h2 class="section-title">
+                        <span class="comment">// Education</span>
+                    </h2>
+                </div>
+                <div class="education-card">
+                    <div class="edu-icon">🎓</div>
+                    <div class="edu-content">
+                        <h3 class="edu-degree">Bachelor of Science</h3>
+                        <p class="edu-major">Biomedical Imaging and Radiological Sciences</p>
+                        <p class="edu-school">National Yang Ming Chiao Tung University</p>
+                        <p class="edu-year">2008 - 2013</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact-terminal">
         <div class="container">
-            <div class="contact-content">
-                <h2 class="contact-title">Get in Touch</h2>
-                <p class="contact-description">
-                    I'm open to discussing new opportunities, technical challenges, or backend architecture topics.
-                    Feel free to connect on LinkedIn.
-                </p>
-                <div class="contact-cta">
-                    <a href="https://www.linkedin.com/in/dennis-liu-89b502188" target="_blank" class="btn btn-primary btn-large">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                        Connect on LinkedIn
-                    </a>
+            <div class="section-header">
+                <span class="line-number">005</span>
+                <h2 class="section-title">
+                    <span class="comment">// Get In Touch</span>
+                </h2>
+            </div>
+
+            <div class="contact-window">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
+                    </div>
+                    <div class="terminal-title">contact.sh</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">./contact.sh</span>
+                    </div>
+                    <div class="output contact-output">
+                        <p class="contact-intro">
+                            Open to discussing new opportunities, technical challenges,
+                            or backend architecture topics.
+                        </p>
+                        <div class="contact-method">
+                            <span class="method-label">LinkedIn:</span>
+                            <a href="https://www.linkedin.com/in/dennis-liu-89b502188" target="_blank" class="method-link">
+                                linkedin.com/in/dennis-liu-89b502188
+                            </a>
+                        </div>
+                        <div class="contact-ascii">
+                            <pre>
+    ╔═══════════════════════════════════╗
+    ║  Thanks for visiting!             ║
+    ║  Let's build something amazing.   ║
+    ╚═══════════════════════════════════╝
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <a href="https://www.linkedin.com/in/dennis-liu-89b502188" target="_blank" class="terminal-btn inline-btn">
+                            <span class="btn-prompt">&gt;</span> connect on LinkedIn
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="terminal-footer">
         <div class="container">
-            <p class="footer-text">
-                &copy; 2025 Dennis Liu
-            </p>
+            <div class="footer-content">
+                <p class="footer-text">
+                    <span class="prompt">$</span> echo "© 2025 Dennis Liu - Backend Engineer"
+                </p>
+                <p class="footer-meta">
+                    <span class="meta-item">Last updated: Jan 2025</span>
+                    <span class="separator">|</span>
+                    <span class="meta-item">Built with terminal aesthetics</span>
+                </p>
+            </div>
         </div>
     </footer>
 
