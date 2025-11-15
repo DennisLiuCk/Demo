@@ -433,3 +433,379 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     }
     requestAnimationFrame(updateFPS);
 }
+
+// ==========================================
+// NEW INTERACTIVE FEATURES
+// ==========================================
+
+// ===== Interactive Terminal Command System =====
+const commandInput = document.querySelector('.typing-cursor');
+let isInputMode = false;
+let currentInput = '';
+const commandHistory = [];
+let historyIndex = -1;
+
+const commands = {
+    help: () => `Available commands:
+    help          - Show this help message
+    about         - About Dennis Liu
+    skills        - List technical skills
+    experience    - Show work history
+    contact       - Get contact information
+    matrix on/off - Toggle matrix effect
+    theme         - Change color theme
+    clear         - Clear terminal
+    joke          - Get a programming joke
+    date          - Show current date`,
+
+    about: () => `Dennis Liu - Backend Engineer
+Specializing in distributed systems, API architecture, and scalable e-commerce solutions.
+Currently architecting merchant-centric platforms at Shoalter Technology.`,
+
+    skills: () => `Core Technologies:
+• Java, Spring Boot, Spring Cloud
+• MySQL, Redis, Oracle
+• Docker, Kubernetes, AWS
+• API Gateway, Microservices
+• Grafana, Glowroot`,
+
+    experience: () => `Work History:
+[CURRENT] Shoalter Technology - Senior Software Engineer (2024.10 - Present)
+[2022-2024] Gogoro - Software Engineer
+[2019-2021] Galaxy Software Services - Java Program Analyst`,
+
+    contact: () => `LinkedIn: linkedin.com/in/dennis-liu-89b502188
+Feel free to connect for opportunities or tech discussions!`,
+
+    date: () => new Date().toLocaleString(),
+
+    joke: () => {
+        const jokes = [
+            "Why do Java developers wear glasses? Because they don't C#!",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+            "A SQL query walks into a bar, walks up to two tables and asks: 'Can I join you?'",
+            "Why did the developer go broke? Because he used up all his cache!",
+            "There are 10 types of people: those who understand binary and those who don't."
+        ];
+        return jokes[Math.floor(Math.random() * jokes.length)];
+    }
+};
+
+// Activate terminal input on click
+if (commandInput) {
+    const terminalHint = document.querySelector('.terminal-hint');
+    commandInput.parentElement.style.cursor = 'text';
+
+    commandInput.parentElement.addEventListener('click', () => {
+        isInputMode = true;
+        commandInput.textContent = currentInput + '_';
+        commandInput.style.animation = 'blink 1s infinite';
+
+        // Hide hint when terminal is activated
+        if (terminalHint) {
+            terminalHint.classList.add('hidden');
+        }
+    });
+
+    // Add hover effect to the terminal line
+    commandInput.parentElement.addEventListener('mouseenter', () => {
+        if (terminalHint && !isInputMode) {
+            terminalHint.style.opacity = '1';
+        }
+    });
+
+    commandInput.parentElement.addEventListener('mouseleave', () => {
+        if (terminalHint && !isInputMode) {
+            terminalHint.style.opacity = '0.6';
+        }
+    });
+}
+
+// Handle keyboard input for terminal
+document.addEventListener('keydown', (e) => {
+    if (!isInputMode) return;
+
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        executeCommand(currentInput.trim());
+        currentInput = '';
+        commandHistory.unshift(currentInput);
+        historyIndex = -1;
+    } else if (e.key === 'Backspace') {
+        e.preventDefault();
+        currentInput = currentInput.slice(0, -1);
+        commandInput.textContent = currentInput + '_';
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            currentInput = commandHistory[historyIndex] || '';
+            commandInput.textContent = currentInput + '_';
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex > -1) {
+            historyIndex--;
+            currentInput = historyIndex === -1 ? '' : commandHistory[historyIndex];
+            commandInput.textContent = currentInput + '_';
+        }
+    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        currentInput += e.key;
+        commandInput.textContent = currentInput + '_';
+    }
+});
+
+function executeCommand(cmd) {
+    const [command, ...args] = cmd.toLowerCase().split(' ');
+
+    // Special handling for clear command
+    if (command === 'clear') {
+        const outputs = document.querySelectorAll('.command-output');
+        outputs.forEach(output => output.remove());
+
+        // Show brief confirmation then remove it
+        const clearMsg = document.createElement('div');
+        clearMsg.className = 'command-output';
+        clearMsg.style.cssText = 'margin: 10px 0; color: #00ff9f; white-space: pre-wrap; opacity: 1; transition: opacity 0.5s ease;';
+        clearMsg.textContent = 'Terminal cleared.';
+        commandInput.parentElement.parentElement.appendChild(clearMsg);
+
+        setTimeout(() => {
+            clearMsg.style.opacity = '0';
+            setTimeout(() => clearMsg.remove(), 500);
+        }, 800);
+        return;
+    }
+
+    // Create output element
+    const outputDiv = document.createElement('div');
+    outputDiv.className = 'command-output';
+    outputDiv.style.cssText = 'margin: 10px 0; color: #8892b0; white-space: pre-wrap;';
+
+    if (command === 'matrix') {
+        if (args[0] === 'off') {
+            canvas.style.opacity = '0';
+            outputDiv.textContent = 'Matrix effect disabled';
+        } else {
+            canvas.style.opacity = '1';
+            outputDiv.textContent = 'Matrix effect enabled';
+        }
+    } else if (command === 'theme') {
+        cycleTheme();
+        outputDiv.textContent = 'Theme changed!';
+    } else if (commands[command]) {
+        const result = commands[command]();
+        outputDiv.textContent = result;
+    } else if (command) {
+        outputDiv.textContent = `Command not found: ${command}\nType 'help' for available commands.`;
+    }
+
+    if (outputDiv.textContent) {
+        commandInput.parentElement.parentElement.appendChild(outputDiv);
+    }
+}
+
+// ===== Copy Code Block Feature =====
+const codeBlocks = document.querySelectorAll('.code-block');
+codeBlocks.forEach(block => {
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-code-btn';
+    copyBtn.innerHTML = '📋 Copy';
+    copyBtn.style.cssText = `
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 255, 159, 0.1);
+        border: 1px solid #00ff9f;
+        color: #00ff9f;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        transition: all 0.3s ease;
+        z-index: 10;
+    `;
+
+    block.style.position = 'relative';
+    block.appendChild(copyBtn);
+
+    copyBtn.addEventListener('click', () => {
+        const code = block.querySelector('code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            copyBtn.innerHTML = '✓ Copied!';
+            copyBtn.style.background = 'rgba(0, 255, 159, 0.3)';
+            setTimeout(() => {
+                copyBtn.innerHTML = '📋 Copy';
+                copyBtn.style.background = 'rgba(0, 255, 159, 0.1)';
+            }, 2000);
+        });
+    });
+
+    copyBtn.addEventListener('mouseenter', () => {
+        copyBtn.style.background = 'rgba(0, 255, 159, 0.2)';
+        copyBtn.style.transform = 'scale(1.05)';
+    });
+
+    copyBtn.addEventListener('mouseleave', () => {
+        copyBtn.style.background = 'rgba(0, 255, 159, 0.1)';
+        copyBtn.style.transform = 'scale(1)';
+    });
+});
+
+// ===== Konami Code Easter Egg =====
+let konamiCode = [];
+const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    konamiCode = konamiCode.slice(-10);
+
+    if (konamiCode.join(',') === konamiSequence.join(',')) {
+        activateKonamiEasterEgg();
+    }
+});
+
+function activateKonamiEasterEgg() {
+    // Create epic effect
+    document.body.style.animation = 'rainbow 2s ease infinite';
+
+    // Show message
+    const easterEgg = document.createElement('div');
+    easterEgg.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid #00ff9f;
+        padding: 30px;
+        border-radius: 10px;
+        z-index: 10000;
+        text-align: center;
+        color: #00ff9f;
+        font-family: 'JetBrains Mono', monospace;
+        box-shadow: 0 0 30px rgba(0, 255, 159, 0.5);
+    `;
+    easterEgg.innerHTML = `
+        <h2 style="margin: 0 0 10px 0; font-size: 24px;">🎮 KONAMI CODE ACTIVATED! 🎮</h2>
+        <p style="margin: 10px 0;">You've unlocked the secret developer mode!</p>
+        <p style="font-size: 12px; color: #8892b0; margin-top: 15px;">Click anywhere to close</p>
+    `;
+
+    document.body.appendChild(easterEgg);
+
+    easterEgg.addEventListener('click', () => {
+        easterEgg.remove();
+        document.body.style.animation = '';
+    });
+
+    // Add rainbow animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    setTimeout(() => {
+        if (document.body.contains(easterEgg)) {
+            easterEgg.remove();
+            document.body.style.animation = '';
+        }
+    }, 5000);
+}
+
+// ===== Theme Switcher =====
+const themes = [
+    { name: 'Terminal Elegance', primary: '#00ff9f', secondary: '#00d4ff', accent: '#ff0080' },
+    { name: 'Cyberpunk Red', primary: '#ff0055', secondary: '#ffaa00', accent: '#00ffff' },
+    { name: 'Ocean Blue', primary: '#00b4d8', secondary: '#0077b6', accent: '#90e0ef' },
+    { name: 'Purple Haze', primary: '#b026ff', secondary: '#7209b7', accent: '#f72585' },
+    { name: 'Retro Green', primary: '#39ff14', secondary: '#00ff00', accent: '#ccff00' }
+];
+let currentThemeIndex = 0;
+
+function cycleTheme() {
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    const theme = themes[currentThemeIndex];
+
+    document.documentElement.style.setProperty('--neon-green', theme.primary);
+    document.documentElement.style.setProperty('--neon-cyan', theme.secondary);
+    document.documentElement.style.setProperty('--neon-pink', theme.accent);
+
+    // Show theme name
+    const themeNotif = document.createElement('div');
+    themeNotif.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border: 2px solid ${theme.primary};
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: ${theme.primary};
+        font-family: 'JetBrains Mono', monospace;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    themeNotif.textContent = `Theme: ${theme.name}`;
+    document.body.appendChild(themeNotif);
+
+    setTimeout(() => themeNotif.remove(), 2000);
+}
+
+// Add theme toggle button
+const themeToggle = document.createElement('button');
+themeToggle.innerHTML = '🎨';
+themeToggle.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 255, 159, 0.1);
+    border: 2px solid #00ff9f;
+    color: #00ff9f;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+`;
+document.body.appendChild(themeToggle);
+
+themeToggle.addEventListener('click', cycleTheme);
+themeToggle.addEventListener('mouseenter', () => {
+    themeToggle.style.transform = 'scale(1.1) rotate(180deg)';
+    themeToggle.style.background = 'rgba(0, 255, 159, 0.3)';
+});
+themeToggle.addEventListener('mouseleave', () => {
+    themeToggle.style.transform = 'scale(1) rotate(0deg)';
+    themeToggle.style.background = 'rgba(0, 255, 159, 0.1)';
+});
+
+// Add slideIn animation
+const themeStyle = document.createElement('style');
+themeStyle.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(themeStyle);
+
+console.log('%c🎮 New Interactive Features Loaded!', 'color: #00ff9f; font-size: 14px; font-weight: bold;');
+console.log('%c• Click the typing cursor and type "help" to see available commands', 'color: #00d4ff; font-size: 12px;');
+console.log('%c• Try the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A', 'color: #ff0080; font-size: 12px;');
+console.log('%c• Click the 🎨 button to change themes', 'color: #b026ff; font-size: 12px;');
